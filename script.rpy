@@ -176,8 +176,6 @@ label start:
         jump choice2_done
 
 
-
-
     label choice2_id_prefer:
 
         show pauling neutral
@@ -245,18 +243,255 @@ label start:
         hide pauling with dissolve
         "We exit the building together. Now that the mercenaries know I exist, it was time for me to learn the timetables, tech and maps."
     
-
-
-    # Scene 1 end
+        scene black with dissolve
+        jump chapter2
+return
 
 # SCENE 2
-    
-    
-    scene black with fade
+label chapter2:
 
     "Chapter 2"
 
-    
-    # This ends the game.
+    scene hallway
+    "Miss Pauling and my steps echo in the empty hallway. We aren’t saying a word as we’re walking to the office she told me about."
+    "She and I will spend most of our work hours in there. This will be my first time stepping in our office."
+    "She probably has her mind in her other work-related things as she’s showing me around. I am not speaking simply because I am not told to, I hate small talk and because I don’t have any questions."
+    "Honestly I don’t think I’d speak up even if I had any questions either… That’s a bad habit I need to get rid of. This job is important."
+    "Miss Pauling and I stop in front of a lift. She presses a button and the doors open before us."
+    scene lift
+
+    show pauling neutral
+    p "“Our office is pretty high up. The view is nice.”"
+    a "“Allright.”"
+    hide pauling
+
+    scene office
+    "After a little wait, the lift doors open and we’re greeted with a cozy atmosphere. Wooden furniture, dim lightning, windows to look outside."
+
+    show pauling happy
+    p "“I ordered you your very own work desk. I put it next to mine.”"
+    p embarrassed "“We can … put it elsewhere if you wanna work in your own space.”"
+    hide pauling
+
+    menu:
+        "Its current location is fine":
+            jump current_location_is_fine
+
+        "I wanna have a little space.":
+            jump i_wanna_have_space
 
     return
+
+    label current_location_is_fine:
+
+    show pauling happy
+    p "“Ah! Brilliant! Saves us time not needing to move it.”"
+    p neutral "“Let’s get straight to work shall we?”"
+    hide pauling
+
+    jump choice3_done
+
+    return
+
+    label i_wanna_have_space:
+
+    show pauling neutral
+    p "“I totally understand. Please help me move your desk.”"
+    p "“I’ll grab this end. You’ll grab the other.”"
+
+    "I obey. We move my desk across the room. I will be working our backs facing each other."
+
+    p "“Phew! Now we can get to work.”"
+    hide pauling
+
+    jump choice3_done
+
+    return
+
+    label choice3_done:
+
+    "Miss Pauling carries a large pile of papers to me tells me to organise in chronological order. I eye the familiar typewriter font in the paper on top of the pile before setting it on my desk."
+    "My eyes became tired as the hours went by."
+    "I completed the sorting after a couple of more hours."
+    a "“I’m done.”"
+    show pauling doubt
+    p "“Just a second.”"
+    p neutral "“There.”"
+    p "“Good job. I’m gonna take those from you and put them in folders. You can take a little break.”"
+
+    show pauling surprised at left
+    "She walked a few steps away from me with the pile. Her face lit up and she turned around."
+
+    p "“There’s the mercenaries’ files in the 3rd locker of my desk. You can get to know the boys a little better by reading them."
+    p embarrassed "“Some of their backgrounds may be a little weird. But you won’t mind, will you?”"
+    a "“At least it’ll be an interesting legible.”"
+    p neutral "“You’re right. I’ll go now. See you soon.”"
+
+    "She presses the lift button with her elbow and leaves when the doors open. I’m surprised how easy she made carrying the papers look."
+    hide pauling with dissolve
+
+    "I stand up and rummage through the 3rd locker of Miss Pauling’s desk. I get my hands on a folder titled as the mercenaries’ files. It says “CLASSIFIED” in red on the middle."
+    "My lips curl into a smile as I walk to my own desk. The classified text made the folder look very secret and important. I’m excited I have a pass that lets me get away with something a normal civilian wouldn’t."
+    "A normal citizen would probably get assassinated for this."
+    "I sat down, crossed my legs and prepared to dive into the mysteries of the folder. Which one should I read first?"
+
+    default Demoman = False
+    default Pyro = False
+
+    menu:
+        "Medic":
+            jump Medic
+            
+        "Scout":
+            jump Scout
+
+        "Heavy":
+                jump Heavy
+
+        "Sniper":
+            jump Sniper
+
+        "Spy":
+            jump Spy
+            
+        "Soldier":
+            jump Soldier
+            
+        "Demoman":
+            $ Demoman = True
+            jump Demoman
+
+        "Pyro":
+            $ Pyro = True
+            jump Pyro
+            
+        "Engineer":
+            jump Engineer
+
+    return
+
+    label Medic:
+
+    "I picked the BLU team doctor’s file first. It had the Medic’s black and white picture. He looked serious."
+
+    a "{i}Oh. His real name is Ludwig. Hm. He definitely looks like a Ludwig.{/i}"
+    "There was age, height, weight and other medical information. Now came the exciting part. -His background."
+    "…"
+    "I blink and re-read the text in case my eyes were deceiving me the first time."
+    "I chuckle out loud. No way this guy’s background is like a horror-themed sitcom."
+    "I doubted if Medic’s qualified to be the team’s healer but I guess he is since he’s not been fired yet. He also did invent a ray that heals people in a short moment and a way to make them invincible for 8 seconds."
+    "On second thought I wouldn’t fire him either. Even though he should’ve been locked up in an asylum 30 years ago…"
+    jump file_choice_done
+    return
+
+    label Scout:
+    "I picked the BLU team Scout’s file first. It had his black and white picture. He’s smiling."
+    "This is the guy who complained about me being here."
+
+    a "{i}Oh. His real name is Jeremy.{/i}"
+    "There was age, height, weight and other medical information. Now came the exciting part. -His background."
+    "The craziest part of his background is he having seven brothers. Oh, the poor mother of his not only gave birth but raised eight Scouts."
+    jump file_choice_done
+    return
+
+    label Heavy:
+    "I picked the BLU team’s Heavy weapons guy’s file first. It had his black and white picture. He looked serious."
+    a "{i}Oh. His real name is Mikhail. That’s such a nice name. Gives me sympathetic vibes.{/i}"
+    "There was age, height, weight and other medical information. Now came the exciting part. -His background."
+    a "{i}He’s from the USSR. That makes us neighbours.{/i}"
+    "I can’t lie his story wasn’t exciting but it did make me frown."
+    "I read the current description of him. It says he usually shows clear signs of enjoyment such as laughing when shooting people down. In addition, he treats his minigun as if it was sentient."
+    "I shrug. I’m not weirded out by that. Good for him."
+    jump file_choice_done
+    return
+
+    label Sniper:
+    "I picked the BLU team Sniper’s file first. It had his black and white picture. He looked serious."
+    a "{i}His real name is mister Mundy, I see…{/i}"
+    "…"
+    "Hmm. This one’s nothing crazy. An assassin so good at his job that even Admin became interested in hiring him."
+    "I wonder why Miss Pauling warned me. Maybe the rest of the mercenaries are more mental."
+    jump file_choice_done 
+    return
+
+    label Spy:
+    "I picked the BLU team Spy’s file first. It had his black and white picture. He looked serious and wealthy type of guy."
+    "His first and surname was stated but I don’t know how to pronounce them."
+    "French is such a weird language compared to my own where every letter is pronounced the way it’s written and doesn’t play mind games like English and especially French."
+    "There was age, height, weight and other medical information. Now came the exciting part. -His background."
+    "Before I opened the Spy’s file, I had expected something crazy like Miss Pauling warned. He was just a hitman so good that even Admin became interested in hiring him."
+    "I wonder why Miss Pauling warned me. Maybe the rest of the mercenaries are more mental."
+    jump file_choice_done
+    return
+
+    label Soldier:
+    "I picked the BLU team Soldier’s file first. It had his black and white picture. He was doing a salute with a serious face."
+    "He’s chosen “Jane Doe” as his alias. I raise my brows confused."
+    "An unidentifiable woman as an alias? Why? Maybe the rest of the file gives me an explanation."
+    "There was his first and surname, age, height, weight and other medical information. Now came the exciting part. -His background."
+    "…"
+    "After reading the text I stare at it blankly. I shake my head and rub my temples processing all the information I just read with the two of my eyes."
+    "Jesus Christ…"
+    "I can see why Miss Pauling warned me before leaving."
+    "I’m entertained by utterly mental stories but this one left me speechless."
+    a "{i}All right… Let’s see the rest.{/i}"
+    jump file_choice_done
+    return
+
+    label Demoman:
+    "I picked the BLU team Demoman’s file first. It had his black and white picture. He looked sleepy."
+    a "{i}Tavish Finnegan DeGroot. This is the first time hearing any of those names.{/i}"
+    "Even though his first name was unfamiliar to me, it did amuse me. “Tavish” means a very normal or basic person in Finnish."
+    "I’m hoping this coincidence isn’t foreshadowing anything."
+    "The file had also stated his age, height, weight and other medical information. Now came the exciting part. -His background."
+    "…"
+    "I squint my eyes in disbelief. This text wants me to believe his eye is cursed by magic."
+    "I need to ask Miss Pauling about this."
+    jump file_choice_done
+    return
+
+    label Pyro:
+    "I picked the BLU team Pyromaniac’s file first. It had the Pyro’s black and white picture."
+    "There was age, height, weight and other medical information."
+    a "{i}“First name: Unknown. Surname: Unknown.” How mysterious.{/i}"
+    a "{i}“The subject has a neurological developmental disability: Semi-verbal autism.”{/i}"
+    "That explains his muffling."
+    "Now came the exciting part. -His background."
+    "…"
+    "The text and the evidence pictures gave me chills."
+    "The burned victims had a terrified expressions plastered on their faces forever. Their skin was crusty and blackened."
+    "The Pyro was known to show clear signs of enjoyment such as laughing and happily hopping around when burning people alive."
+    "This guy is definitely a sadist."
+    jump file_choice_done
+    return
+
+    label Engineer:
+    "I picked the BLU team Engineer’s file first. It had his black and white picture. He was smiling with teeth."
+    a "{i}Dell Conagher’s his real name.{/i}"
+    a "{i}Dell… Dell… That’s such a nice name. No K’s or R’s or any other letters that make names sound blunt or harsh. “Dell” is perfectly soft.{/i}"
+    a "{i}I have been wondering what to name my future cat or chihuahua. Now I know. If I ever get a pet that is…{/i}"
+    "There was age, height, weight and other medical information. Now came the exciting part. -His background."
+    "I was highly impressed until the Gunslinger part."
+    "Why the hell would one replace their fully functioning hand -and even the right one- for a robotic one?"
+    "I shrug. He’s the one with 11 PhDs. Not me. Maybe he’s onto something. I really hope so for his sake…"
+    jump file_choice_done
+    return
+
+    label file_choice_done:
+    
+    if Pyro:
+
+        "I read more files. The stories got crazier and crazier. I admit I was very entertained so far."
+        "I was surprised the Pyro being the only one whose real name was a mystery."
+    else:
+        "I read more files. The stories got crazier and crazier. I admit I was very entertained so far."
+        
+    "Now was the last file’s turn. The tank operator’s."
+    a "{i}This is the guy who was a little too excited to see me. For a Finn too… Let’s see what’s this guy’s deal.{/i}"
+    "I go through the text in a calm manner. I slowly start glaring at the text, scrunching up my nose and tightening my grip."
+    "What a nutcase!"
+    "I’m getting goosebumps. I was careful not to damage the paper even though I wanted to. I want nothing to do with anything regarding to this man."
+    jump chapter3
+    return
+
+label chapter3:
